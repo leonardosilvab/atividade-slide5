@@ -4,7 +4,6 @@ function construtor(){
 	var observer = {};
 	var listaObservers = [];
 	var contador = 0;
-
 	var gatilhoscont = 0;
 
 	observer.gatilho=function(){
@@ -26,15 +25,23 @@ function construtor(){
 	}
 
 	observer.add = function(objeto){
+
 		listaObservers.push(objeto);
+
 	}
 
+	observer.multiplicador = function(x,y){
+		return x * y;
+	};
+
+	
 	return observer;
 }
 
+var varObserver = construtor();
 
 function exibirContador(){
-	console.log(observer.exibeContador());
+	console.log(varObserver.exibeContador());
 }
 
 
@@ -42,14 +49,15 @@ function greetings(){
 	console.log("Hello world");
 }
 
+function printarMultiplicador(){
+	console.log(varObserver.multiplicador(3,5));
+}
 
-
-
-var observer = construtor();
-observer.add(exibirContador);
-observer.add(greetings);
-observer.contar();
-observer.contar();
-observer.contar();
-observer.contar();
-observer.gatilho();
+varObserver.add(exibirContador);
+varObserver.add(greetings);
+varObserver.add(printarMultiplicador);
+varObserver.contar();
+varObserver.contar();
+varObserver.contar();
+varObserver.contar();
+varObserver.gatilho();
